@@ -39,7 +39,7 @@ if [ -z "${WIKI_COMMIT_MESSAGE:-}" ]; then
 fi
 
 GIT_REPOSITORY_URL="https://${GH_PERSONAL_ACCESS_TOKEN}@github.com/$GITHUB_REPOSITORY.wiki.git"
-
+pwd
 debug "Checking out wiki repository"
 tmp_dir=$(mktemp -d -t ci-XXXXXXXXXX)
 (
@@ -49,7 +49,8 @@ tmp_dir=$(mktemp -d -t ci-XXXXXXXXXX)
     git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
     git pull "$GIT_REPOSITORY_URL"
 )
-
+pwd
+cd ..
 cp -R "$1/*" "$tmp_dir"
 
 debug "Committing and pushing changes"
