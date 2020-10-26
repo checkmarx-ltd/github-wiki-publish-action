@@ -53,7 +53,7 @@ tmp_dir=$(mktemp -d -t ci-XXXXXXXXXX)
 debug "Enumerating contents of $1"
 for file in $(find $1 -maxdepth 2 -type f \( -name "*.md" -o -name "*.PNG" -o -name "*.png" \) ); do
     debug "Copying $1/$file to $tmp_dir"
-    cp "$1/$file" "$tmp_dir"
+    cp "$file" "$tmp_dir"
 done
 
 debug "Committing and pushing changes"
